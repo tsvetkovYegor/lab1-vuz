@@ -1,0 +1,14 @@
+.vs/
+.vscode/
+Debug/
+Release/
+x64/
+build/
+*.exe
+*.o
+*.out
+*.user
+*.filters
+VUZ/vuz
+*.txt
+.DS_Store
