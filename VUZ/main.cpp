@@ -1,24 +1,30 @@
 #include "Student.h"
+#include "Teacher.h"
+#include "Admin.h"
 #include "VuzException.h"
 
-// Временная проверка класса Student (меню будет добавлено позже)
+// Временная проверка классов Student, Teacher, Admin (меню будет добавлено позже)
 int main()
 {
     try
     {
-        Student* s1 = new Student("Иванов Иван Иванович", "1421", "Прикладная информатика", 2, 4.5);
-        cout << *s1 << endl;
+        string groups[] = { "1421", "1425" };
+        string subjects[] = { "Программирование" };
 
-        Student* s2 = new Student(*s1);
-        cout << *s2 << endl;
+        Base* s = new Student("Иванов Иван Иванович", "1421", "Прикладная информатика", 2, 4.5);
+        Base* t = new Teacher("Смирнов Сергей Петрович", groups, 2, subjects, 1);
+        Base* a = new Admin("Кузнецова Елена Андреевна", "Методист", "+7 812 000-00-00", "Расписание");
 
-        Student* s3 = new Student();
-        s3->input();
-        cout << *s3 << endl;
+        cout << *s << endl << *t << endl << *a << endl;
 
-        delete s1;
-        delete s2;
-        delete s3;
+        Base* t2 = t->clone();
+        t2->edit();
+        cout << *t2 << endl;
+
+        delete s;
+        delete t;
+        delete a;
+        delete t2;
     }
     catch (const VuzException& e)
     {
